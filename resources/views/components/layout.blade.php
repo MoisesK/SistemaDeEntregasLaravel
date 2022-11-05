@@ -14,7 +14,7 @@
     <div class="container">
         <x-header />
 
-        <h1>{{ $title }}</h1>
+        <h1 class="text-center text-uppercase"><i class="{{$icone}}"></i>{{ $title }}</h1>
 
         {{$slot}}
 
