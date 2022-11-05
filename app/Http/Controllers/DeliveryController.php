@@ -31,7 +31,7 @@ class DeliveryController extends Controller
      */
     public function create()
     {
-        //
+        return view('deliveries.create');
     }
 
     /**

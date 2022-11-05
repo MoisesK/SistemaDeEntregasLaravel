@@ -14,8 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/deliveries', [DeliveryController::class, 'index']);
+Route::get('/', [DeliveryController::class, 'index']);
+Route::get('/deliveries/create', [DeliveryController::class, 'create']);
