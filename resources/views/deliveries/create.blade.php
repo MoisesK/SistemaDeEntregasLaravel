@@ -3,9 +3,6 @@
     <div class="col-md-4">
       <label for="nome" class="form-label">Seu Nome</label>
       <input type="text" class="form-control" id="nome" name="nome" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
     </div>
     <div class="col-12">
       <button class="btn btn-primary" type="submit">Cadastrar Entrega</button>
