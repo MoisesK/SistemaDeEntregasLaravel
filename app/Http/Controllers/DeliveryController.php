@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DeliveryController extends Controller
 {
@@ -11,7 +12,7 @@ class DeliveryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $deliveries = [
             'teste',
@@ -42,7 +43,25 @@ class DeliveryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newDelivery = [
+            "title" => $request->input('title'),
+            "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
+            "descript" => $request->input('descript'),
+            "stats" => "Pendente",
+            "place" => $request->input('place')
+        ];
+
+        if (DB::insert('INSERT INTO deliveries (title,deadline,descript,stats,place) VALUES (?,?,?,?,?)', [
+            $newDelivery["title"],
+            $newDelivery["deadline"],
+            $newDelivery["descript"],
+            $newDelivery["stats"],
+            $newDelivery["place"]
+        ])) {
+            return redirect("/");
+        } else {
+            return "ERRO";
+        }
     }
 
     /**
