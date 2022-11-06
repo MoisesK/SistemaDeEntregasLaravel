@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,14 +15,10 @@ class DeliveryController extends Controller
      */
     public function index()
     {
-        $deliveries = [
-            'teste',
-            'teste2',
-            'teste3'
-        ];
+        $deliveries = Delivery::all();
 
         return view('deliveries.index')->with([
-            'deliveries' => $deliveries
+            'deliveries' => $deliveries,
         ]);
     }
 
@@ -43,25 +40,15 @@ class DeliveryController extends Controller
      */
     public function store(Request $request)
     {
-        $newDelivery = [
+        Delivery::create($infoDelivery = [
             "title" => $request->input('title'),
             "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
             "descript" => $request->input('descript'),
-            "stats" => "Pendente",
+            "stats" => "Pnedente",
             "place" => $request->input('place')
-        ];
+        ]);
 
-        if (DB::insert('INSERT INTO deliveries (title,deadline,descript,stats,place) VALUES (?,?,?,?,?)', [
-            $newDelivery["title"],
-            $newDelivery["deadline"],
-            $newDelivery["descript"],
-            $newDelivery["stats"],
-            $newDelivery["place"]
-        ])) {
             return redirect("/");
-        } else {
-            return "ERRO";
-        }
     }
 
     /**
@@ -106,6 +93,6 @@ class DeliveryController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

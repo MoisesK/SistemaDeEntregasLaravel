@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DeliveryController::class, 'index']);
-Route::get('/deliveries/create', [DeliveryController::class, 'create']);
-Route::post('/deliveries/save', [DeliveryController::class, 'store']);
+Route::controller(DeliveryController::class)->group(function () {
+    Route::get('/', 'index');
+    Route::get('/deliveries/create', 'create');
+    Route::post('/deliveries/save', 'store');
+});
