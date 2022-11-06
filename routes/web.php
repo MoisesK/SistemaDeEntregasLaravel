@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(DeliveryController::class)->group(function () {
-    Route::get('/', 'index');
-    Route::get('/deliveries/create', 'create');
-    Route::post('/deliveries/save', 'store');
+    Route::get('/', 'index')->name('deliveries.index');
+    Route::get('/deliveries/create', 'create')->name('deliveries.create');
+    Route::post('/deliveries/save', 'store')->name('deliveries.store');
 });

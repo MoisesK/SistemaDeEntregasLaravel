@@ -44,11 +44,11 @@ class DeliveryController extends Controller
             "title" => $request->input('title'),
             "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
             "descript" => $request->input('descript'),
-            "stats" => "Pnedente",
+            "stats" => "Pendente",
             "place" => $request->input('place')
         ]);
 
-            return redirect("/");
+            return to_route('deliveries.index');
     }
 
     /**

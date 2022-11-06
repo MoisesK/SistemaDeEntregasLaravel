@@ -1,6 +1,6 @@
 <x-layout title="Nova Entrega" icone="bi bi-clipboard2">
     <section id="form">
-        <form action="/deliveries/save" method="POST" class="mb-5">
+        <form action="{{ route(deliveries.store) }}" method="POST" class="mb-5">
             @csrf
             <div class="text-center form-group col-12">
                 <label for="title" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Titulo da Entrega</label>
