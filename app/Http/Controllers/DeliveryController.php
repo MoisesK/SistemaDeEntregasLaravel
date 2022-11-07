@@ -48,7 +48,7 @@ class DeliveryController extends Controller
             "place" => $request->input('place')
         ]);
 
-            return to_route('deliveries.index');
+        return to_route('deliveries.index');
     }
 
     /**
@@ -91,8 +91,10 @@ class DeliveryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        Delivery::destroy($request->id);
 
+        return to_route('deliveries.index');
     }
 }

@@ -18,4 +18,5 @@ Route::controller(DeliveryController::class)->group(function () {
     Route::get('/', 'index')->name('deliveries.index');
     Route::get('/deliveries/create', 'create')->name('deliveries.create');
     Route::post('/deliveries/save', 'store')->name('deliveries.store');
+    Route::delete('/deliveries/destroy/{id}', 'destroy')->name('deliveries.destroy');
 });
