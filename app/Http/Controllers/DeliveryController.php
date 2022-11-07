@@ -13,12 +13,14 @@ class DeliveryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $deliveries = Delivery::all();
+        $successMsg = session('msg.success');
 
         return view('deliveries.index')->with([
             'deliveries' => $deliveries,
+            'successMsg' => $successMsg,
         ]);
     }
 
@@ -48,18 +50,9 @@ class DeliveryController extends Controller
             "place" => $request->input('place')
         ]);
 
-        return to_route('deliveries.index');
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return to_route('deliveries.index')
+        ->with('msg.success', 'Entrega adicionada com sucesso!');
     }
 
     /**
@@ -68,9 +61,9 @@ class DeliveryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('deliveries.edit');
     }
 
     /**
@@ -91,10 +84,11 @@ class DeliveryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Delivery $delivery)
     {
-        Delivery::destroy($request->id);
+        $delivery->delete();
 
-        return to_route('deliveries.index');
+        return to_route('deliveries.index')
+        ->with('msg.success', "Entrega {$delivery->id} - {$delivery->title} removida com sucesso!");
     }
 }

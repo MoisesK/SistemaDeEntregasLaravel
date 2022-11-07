@@ -303,6 +303,11 @@ svg {
   vertical-align: middle;
 }
 
+.break{
+  white-space: pre-wrap;
+  word-wrap:break-word;
+}
+
 table {
   caption-side: bottom;
   border-collapse: collapse;
