@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class DeliveryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         $deliveries = Delivery::all();
@@ -24,22 +20,12 @@ class DeliveryController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('deliveries.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         Delivery::create($infoDelivery = [
@@ -55,35 +41,29 @@ class DeliveryController extends Controller
         ->with('msg.success', 'Entrega adicionada com sucesso!');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit()
+ 
+    public function edit(Delivery $delivery)
     {
-        return view('deliveries.edit');
+        return view('deliveries.edit')->with([
+            'delivery' => $delivery,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function update(Delivery $delivery, Request $request)
     {
-        //
+        $delivery->update([
+            "title" => $request->input('title'),
+            "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
+            "descript" => $request->input('descript'),
+            "stats" => $request->input('stats'),
+            "place" => $request->input('place')
+        ]);
+       
+        return to_route('deliveries.index')->
+        with('msg.success', "Entrega {$delivery->id} - {$delivery->title} atualizada com sucesso!");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Delivery $delivery)
     {
         $delivery->delete();

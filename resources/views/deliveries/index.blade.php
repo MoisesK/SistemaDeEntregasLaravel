@@ -29,16 +29,17 @@
                 <td class="col-1">{{ $delivery->stats }}</td>
                 <td class="col-1">{{ $delivery->deadline }}</td>
                 <td class="col-1 text-center align-middle">
-                    <!-- Botão de deletar -->
-                    <form action="{{ route('deliveries.destroy',$delivery->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger"><i class="bi bi-clipboard-x"></i></button>
-                    </form>
-                    <form action="{{ route('deliveries.edit',$delivery->id) }}" method="POST">
-                        @csrf
-                        <button class="btn btn-danger"><i class="bi bi-pencil-square"></i></i></button>
-                    </form>
+                    <span class="d-flex">
+                        <!-- Botão de deletar -->
+                        <form action="{{ route('deliveries.destroy',$delivery->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger"><i class="bi bi-clipboard-x"></i></button>
+                        </form>
+
+                        <!-- BOtão de editar -->
+                            <a href="{{ route('deliveries.edit', [$delivery->id]) }}" class="btn btn-primary ms-2"><i class="bi bi-pencil-square"></i></a>
+                    </span>
                 </td>
             </tr>
             @endforeach
