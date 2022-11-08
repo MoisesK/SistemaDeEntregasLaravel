@@ -2,7 +2,7 @@
     <section id="form">
         <form action="{{ route('deliveries.update', $delivery->id) }}" method="POST" class="mb-5">
             @csrf
-            @if(!empty('title'))
+            @if($update)
             @method('PUT')
             @endif
             <div class="text-center form-group col-12">

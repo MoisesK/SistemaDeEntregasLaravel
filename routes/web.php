@@ -21,6 +21,4 @@ Route::controller(DeliveryController::class)->group(function () {
     Route::delete('/deliveries/destroy/{delivery}', 'destroy')->name('deliveries.destroy');
     Route::get('/deliveries/edit/{delivery}', 'edit')->name('deliveries.edit');
     Route::put('/deliveries/update/{delivery}', 'update')->name('deliveries.update');
-
-
 });

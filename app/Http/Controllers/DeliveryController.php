@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeliveriesFormRequest;
 use App\Models\Delivery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,14 +27,8 @@ class DeliveryController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(DeliveriesFormRequest $request)
     {
-        $request->validate([
-            'title' => ['min:3'],
-            'deadline' => ['required'],
-            'descript' => ['min:10'],
-            'place' => ['min:5'],
-        ]);
 
         Delivery::create($infoDelivery = [
             "title" => $request->input('title'),
@@ -51,13 +46,16 @@ class DeliveryController extends Controller
 
     public function edit(Delivery $delivery)
     {
+        $update = true;
+
         return view('deliveries.edit')->with([
             'delivery' => $delivery,
+            'update' => $update
         ]);
     }
 
 
-    public function update(Delivery $delivery, Request $request)
+    public function update(Delivery $delivery, DeliveriesFormRequest $request)
     {
         $delivery->update([
             "title" => $request->input('title'),
