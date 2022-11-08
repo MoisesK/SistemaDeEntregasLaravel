@@ -22,7 +22,7 @@
 
             <ul>
                 @foreach ($errors->all() as $error)
-                {{ $error }}
+                {{ $error }} <br>
                 @endforeach
             </ul>
         </div>

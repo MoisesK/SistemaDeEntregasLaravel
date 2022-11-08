@@ -30,4 +30,14 @@ class DeliveriesFormRequest extends FormRequest
             'place' => ['min:5']
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.min' => "O campo Titulo deve ser preenchido com no mínimo :min caracteres.",
+            'deadline.required' => 'O campo Prazo deve ser preenchido!',
+            'descript.min' => 'O campo de Descrição deve ser preenchido com no mínimo :min caracteres.',
+            'place.min' => 'O campo de Local deve ser preenchido com no mínimo :min caracteres.'
+        ];
+    }
 }
