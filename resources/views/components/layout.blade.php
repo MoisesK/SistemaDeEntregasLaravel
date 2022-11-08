@@ -16,6 +16,18 @@
 
         <h1 class="text-center text-uppercase"><i class="{{$icone}}"></i>{{ $title }}</h1>
 
+        @if ($errors->any())
+        <div class="alert alert-danger text-center">
+            <strong>ERROR!</strong>
+
+            <ul>
+                @foreach ($errors->all() as $error)
+                {{ $error }}
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
         {{$slot}}
 
 </body>

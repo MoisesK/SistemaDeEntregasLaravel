@@ -28,6 +28,13 @@ class DeliveryController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => ['min:3'],
+            'deadline' => ['required'],
+            'descript' => ['min:10'],
+            'place' => ['min:5'],
+        ]);
+
         Delivery::create($infoDelivery = [
             "title" => $request->input('title'),
             "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
@@ -38,10 +45,10 @@ class DeliveryController extends Controller
 
 
         return to_route('deliveries.index')
-        ->with('msg.success', 'Entrega adicionada com sucesso!');
+            ->with('msg.success', 'Entrega adicionada com sucesso!');
     }
 
- 
+
     public function edit(Delivery $delivery)
     {
         return view('deliveries.edit')->with([
@@ -59,9 +66,8 @@ class DeliveryController extends Controller
             "stats" => $request->input('stats'),
             "place" => $request->input('place')
         ]);
-       
-        return to_route('deliveries.index')->
-        with('msg.success', "Entrega {$delivery->id} - {$delivery->title} atualizada com sucesso!");
+
+        return to_route('deliveries.index')->with('msg.success', "Entrega {$delivery->id} - {$delivery->title} atualizada com sucesso!");
     }
 
     public function destroy(Delivery $delivery)
@@ -69,6 +75,6 @@ class DeliveryController extends Controller
         $delivery->delete();
 
         return to_route('deliveries.index')
-        ->with('msg.success', "Entrega {$delivery->id} - {$delivery->title} removida com sucesso!");
+            ->with('msg.success', "Entrega {$delivery->id} - {$delivery->title} removida com sucesso!");
     }
 }
