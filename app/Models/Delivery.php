@@ -8,8 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Delivery extends Model
 {
     use HasFactory;
-    
-    protected $table = 'deliveries';
-    protected $fillable = ['title', 'deadline', 'descript', 'stats', 'place'];
 
+    protected $table = 'deliveries';
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function deliveryMan()
+    {
+        return $this->belongsTo(DeliveryMan::class);
+    }
 }

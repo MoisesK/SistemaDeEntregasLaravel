@@ -18,7 +18,7 @@
 
         @if ($errors->any())
         <div class="alert alert-danger text-center">
-            <strong>ERROR!</strong>
+            <strong>ERROR! <i class="bi bi-emoji-angry"></i>  </strong>
 
             <ul>
                 @foreach ($errors->all() as $error)
