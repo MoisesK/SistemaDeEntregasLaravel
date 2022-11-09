@@ -24,8 +24,6 @@ class DeliveryController extends Controller
 
     public function create()
     {
-        $deliverym = new DeliveryMan();
-        dd($deliverym->deliveries);
         return view('deliveries.create');
     }
 
@@ -40,6 +38,7 @@ class DeliveryController extends Controller
             "descript" => $request->input('descript'),
             "stats" => "Pendente",
             "place" => $request->input('place'),
+            "delivery_mens_id" => $request->input(''),
         ]);
 
 

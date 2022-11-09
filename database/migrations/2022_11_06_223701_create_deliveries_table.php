@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(DeliveryMan::class, 'deliverie_mens_id')->constrained();
+            $table->foreignIdFor(DeliveryMan::class, 'delivery_mens_id')->constrained();
             $table->string('title', 100);
             $table->dateTime('deadline');
             $table->string('descript', 200);
