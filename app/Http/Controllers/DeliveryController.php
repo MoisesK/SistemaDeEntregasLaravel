@@ -49,6 +49,8 @@ class DeliveryController extends Controller
     {
         $update = true;
 
+        dd($delivery->deliveryMan()->get());
+
         return view('deliveries.edit')->with([
             'delivery' => $delivery,
             'update' => $update

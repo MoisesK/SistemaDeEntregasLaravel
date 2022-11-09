@@ -9,6 +9,7 @@ class DeliveryMan extends Model
 {
     use HasFactory;
 
+    protected $table = 'delivery_mens';
     public function deliveries()
     {
         return $this->hasMany(Delivery::class);
