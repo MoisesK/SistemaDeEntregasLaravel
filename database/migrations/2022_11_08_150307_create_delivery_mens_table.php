@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('delivery_mens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('deliveries_id')->constrained();
+            $table->string('name', 100);
+            $table->string('adress', 100);
+            $table->string('vehicle', 100);
+            $table->integer('age', false);
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_men');
+        Schema::dropIfExists('delivery_mens');
     }
 };

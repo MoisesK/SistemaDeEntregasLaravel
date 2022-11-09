@@ -24,6 +24,8 @@ class DeliveryController extends Controller
 
     public function create()
     {
+        $deliverym = new DeliveryMan();
+        dd($deliverym->deliveries);
         return view('deliveries.create');
     }
 
@@ -31,12 +33,13 @@ class DeliveryController extends Controller
     public function store(DeliveriesFormRequest $request)
     {
 
+
         Delivery::create($infoDelivery = [
             "title" => $request->input('title'),
             "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
             "descript" => $request->input('descript'),
             "stats" => "Pendente",
-            "place" => $request->input('place')
+            "place" => $request->input('place'),
         ]);
 
 
@@ -48,8 +51,6 @@ class DeliveryController extends Controller
     public function edit(Delivery $delivery)
     {
         $update = true;
-
-        dd($delivery->deliveryMan()->get());
 
         return view('deliveries.edit')->with([
             'delivery' => $delivery,
@@ -65,7 +66,7 @@ class DeliveryController extends Controller
             "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
             "descript" => $request->input('descript'),
             "stats" => $request->input('stats'),
-            "place" => $request->input('place')
+            "place" => $request->input('place'),
         ]);
 
         return to_route('deliveries.index')->with('msg.success', "Entrega {$delivery->id} - {$delivery->title} atualizada com sucesso!");
