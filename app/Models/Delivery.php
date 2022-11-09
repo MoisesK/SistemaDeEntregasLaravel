@@ -12,6 +12,7 @@ class Delivery extends Model
 
     protected $table = 'deliveries';
     protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $with = ['deliveryMan'];
 
     public function deliveryMan()
     {
@@ -21,7 +22,7 @@ class Delivery extends Model
     protected static function booted()
     {
         self::addGlobalScope('ordered', function (Builder $queryBuilder) {
-            $queryBuilder->orderBy('title', 'desc');
+            $queryBuilder->orderBy('deadline', 'asc');
         });
     }
 }
