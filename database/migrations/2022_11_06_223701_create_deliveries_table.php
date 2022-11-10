@@ -16,13 +16,14 @@ return new class extends Migration
     {
         Schema::create('deliveries', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(DeliveryMan::class, 'delivery_mens_id')->constrained();
             $table->string('title', 100);
             $table->dateTime('deadline');
             $table->string('descript', 200);
             $table->string('stats', 100);
             $table->string('place', 200);
             $table->timestamps();
+            $table->string('delivery_men_id', 100);
+            $table->string('delivery_men', 100);
         });
     }
 

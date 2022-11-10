@@ -24,7 +24,11 @@ class DeliveryController extends Controller
 
     public function create()
     {
-        return view('deliveries.create');
+        $d_Men = DeliveryMan::all();
+
+        return view('deliveries.create')->with([
+            "deliveries_men" => $d_Men
+        ]);
     }
 
 
@@ -38,7 +42,8 @@ class DeliveryController extends Controller
             "descript" => $request->input('descript'),
             "stats" => "Pendente",
             "place" => $request->input('place'),
-            "delivery_mens_id" => $request->input(''),
+            "delivery_men_id" => $request->input('dMan_id'),
+            "delivery_men" => $request->input('delivery_men')
         ]);
 
 

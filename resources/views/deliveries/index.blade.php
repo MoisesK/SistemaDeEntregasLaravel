@@ -6,6 +6,7 @@
     </div>
     @endisset
 
+    <a class="btn btn-primary btn-sm " href="{{ route('deliveries.create') }}"> CADASTRAR ENTREGAS </a>
 
     <table class="table table-striped table-bordered table-hover table-dark">
         <thead class="thead-light">
@@ -38,7 +39,7 @@
                         </form>
 
                         <!-- BOtão de editar -->
-                            <a href="{{ route('deliveries.edit', [$delivery->id]) }}" class="btn btn-primary ms-2"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{{ route('deliveries.edit', [$delivery->id]) }}" class="btn btn-primary ms-2"><i class="bi bi-pencil-square"></i></a>
                     </span>
                 </td>
             </tr>
