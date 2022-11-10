@@ -62,7 +62,7 @@ class DeliveryController extends Controller
         ]);
     }
 
-
+    // REMOVER CHEGAR EM CASA
     public function update(Delivery $delivery, DeliveriesFormRequest $request)
     {
         $delivery->update([
