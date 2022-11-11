@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeliveryMenFormRequest;
+use App\Models\DeliveryMan;
 use Illuminate\Http\Request;
 
 class DeliveryMenController extends Controller
@@ -11,9 +13,13 @@ class DeliveryMenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('delivery_mens.index');
+        $delivery_men = DeliveryMan::all();
+
+        return view('delivery_mens.index')->with([
+            "deliverie_mens" => $delivery_men
+        ]);
     }
 
     /**
@@ -23,7 +29,7 @@ class DeliveryMenController extends Controller
      */
     public function create()
     {
-        //
+        return view('delivery_mens.create');
     }
 
     /**
@@ -32,9 +38,19 @@ class DeliveryMenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DeliveryMenFormRequest $deliveryMen)
     {
-        //
+
+        DeliveryMan::create($infoDeliveryMen = [
+            'deliveries_id' => '0',
+            'name' => $deliveryMen->input('name'),
+            'adress' => $deliveryMen->input('adress'),
+            'vehicle' => $deliveryMen->input('vehicle'),
+            'age' => $deliveryMen->input('age'),
+        ]);
+
+        return to_route('deliverymens.index')
+            ->with('msg.success', 'Entrega adicionada com sucesso!');
     }
 
     /**

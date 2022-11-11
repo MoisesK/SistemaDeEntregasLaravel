@@ -6,7 +6,7 @@
     </div>
     @endisset
 
-    <a class="btn btn-primary btn-sm " href="{{ route('deliveries.create') }}"> CADASTRAR ENTREGAS </a>
+    <a class="btn btn-primary btn-sm mb-3" href="{{ route('deliveries.create') }}"> CADASTRAR ENTREGAS </a>
 
     <table class="table table-striped table-bordered table-hover table-dark">
         <thead class="thead-light">

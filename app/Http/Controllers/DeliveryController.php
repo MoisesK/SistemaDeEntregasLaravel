@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DeliveriesFormRequest;
+use App\Http\Requests\DeliveryMenFormRequest;
 use App\Models\Delivery;
 use App\Models\DeliveryMan;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class DeliveryController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $d_Men = DeliveryMan::all();
 
@@ -35,6 +36,7 @@ class DeliveryController extends Controller
     public function store(DeliveriesFormRequest $request)
     {
 
+        dd($request);
 
         Delivery::create($infoDelivery = [
             "title" => $request->input('title'),

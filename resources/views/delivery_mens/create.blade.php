@@ -1,41 +1,33 @@
-<x-layout title="Nova Entrega" icone="bi bi-clipboard2">
+<x-layout title="Novo Entregador" icone="bi bi-clipboard2">
     <section id="form">
-        <form action="{{ route('deliveries.store') }}" method="POST" class="mb-5">
+        <form action="{{ route('deliverymens.store') }}" method="POST" class="mb-5">
             @csrf
-            <div class="text-center form-group col-12">
-                <label for="title" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Titulo da Entrega</label>
-                <input type="text" value="{{ old('title') }}" class="form-control col-6 text-center" id="title" name="title" placeholder="Preencha com o Título da Entrega." required>
-            </div>
+            <div class="container form-group">
+                <div class="row">
+                    <div class="col-9 text-center ms-4">
+                        <label for="name" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Nome Completo</label>
+                        <input type="name" value="{{ old('name') }}" class="form-control col-6 text-center" id="name" name="name" placeholder="Preencha com o Nome do Entregador." required>
+                    </div>
 
-            <div class="text-center form-group col-12">
-                <label for="deadline" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Prazo para a Entrega</label>
-                <input type="datetime-local" value="{{ old('deadline') }}" class="form-control text-center" id="deadline" name="deadline" required>
-            </div>
-
-            <div class="text-center form-group col-12">
-                <label for="descript" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Descrição da Entrega</label>
-                <input type="text" value="{{ old('descript') }}" class="form-control col-6 text-center" id="descript" name="descript" placeholder="Preencha com a Descrição/Dados da Entrega." required>
-            </div>
-
-            <div class="text-center form-group col-12">
-                <label for="place" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Local da Entrega</label>
-                <input type="text" value="{{ old('place') }}" class="form-control col-6 text-center" id="place" name="place" placeholder="Preencha com o local da Entrega." required>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="text-center form-group col-4 mt-2">
-                    <label for="delivery_men" class="form-label form-label text-uppercase fs-7 fst-italic ">Entregador</label>
-                    <select class="text-center form-select form-select-lg" name="delivery_men" id="delivery_men">
-                        <option value="Selecione o Entregador" selected>Selecione o Entregador</option>
-                        @foreach ($deliveries_men as $delivery_man)
-                        <option value="{{ $delivery_man->name }}">{{ $delivery_man->name }}</option>
-                        @endforeach
-                        <input name="dMan_id" value="{{ $delivery_man->id }}" type="hidden">
-                    </select>
+                    <div class="col-2">
+                        <label for="age" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Idade</label>
+                        <input type="age" value="{{ old('age') }}" class="form-control col-6 text-center" id="age" name="age" placeholder="XX" required>
+                    </div>
                 </div>
             </div>
 
+            <div class="text-center form-group col-12  ">
+                <label for="adress" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Endereço do Entregador</label>
+                <input type="text" value="{{ old('adress') }}" class="form-control text-center" id="adress" name="adress" placeholder="Preencha com o Endereço do Entregador." required>
+            </div>
+
+            <div class="text-center form-group col-12">
+                <label for="vehicle" class="form-label text-uppercase fs-7 fst-italic mt-4 pb-2">Veículo do Entregador</label>
+                <input type="vehicle" value="{{ old('vehicle') }}" class="form-control col-6 text-center" id="vehicle" name="vehicle" placeholder="Preencha com os dados do Veículo do Entregador." required>
+            </div>
+
             <div class="text-center col-12 mt-5">
-                <button class="btn btn-primary" type="submit">Cadastrar Entrega</button>
+                <button class="btn btn-primary" type="submit">Cadastrar Entregador</button>
                 <a class="btn btn-secondary" href="/">Voltar para Home</a>
             </div>
         </form>

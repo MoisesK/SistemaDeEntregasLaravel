@@ -25,11 +25,10 @@
                 <div class="text-center form-group col-4 mt-2">
                     <label for="delivery_men" class="form-label form-label text-uppercase fs-7 fst-italic ">Entregador</label>
                     <select class="text-center form-select form-select-lg" name="delivery_men" id="delivery_men">
-                        <option value="Selecione o Entregador" selected>Selecione o Entregador</option>
+                        <option value="" selected>Selecione o Entregador</option>
                         @foreach ($deliveries_men as $delivery_man)
                         <option value="{{ $delivery_man->name }}">{{ $delivery_man->name }}</option>
                         @endforeach
-                        <input name="dMan_id" value="{{ $delivery_man->id }}" type="hidden">
                     </select>
                 </div>
             </div>

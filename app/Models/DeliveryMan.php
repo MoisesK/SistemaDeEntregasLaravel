@@ -11,6 +11,8 @@ class DeliveryMan extends Model
 
     protected $table = 'delivery_mens';
 
+    protected $guarded = ['id'];
+
     public function deliveries()
     {
         return $this->hasMany(Delivery::class, 'delivery_mens_id');

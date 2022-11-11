@@ -22,7 +22,7 @@ services:
     - 8081:3306
     environment:
       MYSQL_USER: admin
-      MYSQL_DATABASE: deliverySysLaravel
+      MYSQL_DATABASE: delivery_sys_laravel
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
 

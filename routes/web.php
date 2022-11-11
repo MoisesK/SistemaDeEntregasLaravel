@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return to_route('deliveries.index');
+});
+
 Route::controller(DeliveryController::class)->group(function () {
     Route::get('/deliveries', 'index')->name('deliveries.index');
     Route::get('/deliveries/create', 'create')->name('deliveries.create');
@@ -26,4 +30,6 @@ Route::controller(DeliveryController::class)->group(function () {
 
 Route::controller(DeliveryMenController::class)->group(function () {
     Route::get('/deliverymens', 'index')->name('deliverymens.index');
+    Route::get('/deliverymens/create', 'create')->name('deliverymens.create');
+    Route::post('/deliverymens/save', 'store')->name('deliverymens.store');
 });
