@@ -17,6 +17,7 @@
                 <th class="col-2">LOCAL DE ENTREGA</th>
                 <th class="col-1">STATUS</th>
                 <th class="col-2">PRAZO</th>
+                <th class="col-2">ENTREGADOR</th>
                 <th class="col-1 text-center">AÇÕES</th>
             </tr>
         </thead>
@@ -29,6 +30,7 @@
                 <td class="col-1 break">{{ $delivery->place }}</td>
                 <td class="col-1">{{ $delivery->stats }}</td>
                 <td class="col-1">{{ $delivery->deadline }}</td>
+                <td class="col-1">{{ $delivery->delivery_men }}</td>
                 <td class="col-1 text-center align-middle">
                     <span class="d-flex">
                         <!-- Botão de deletar -->

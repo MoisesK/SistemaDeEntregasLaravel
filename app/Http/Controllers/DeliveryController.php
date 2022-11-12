@@ -35,18 +35,20 @@ class DeliveryController extends Controller
 
     public function store(DeliveriesFormRequest $request)
     {
-        $deliveryMenId = $request->input('delivery_men');
+        $deliveryMenId = $request->input('delivery_men_id');
         $deliveryMenName = DeliveryMan::query('delivery_men')->where('id', "$deliveryMenId")->value('name');
 
-        Delivery::create([
-            "title" => $request->input('title'),
-            "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
-            "descript" => $request->input('descript'),
-            "stats" => "Pendente",
-            "place" => $request->input('place'),
-            "delivery_men_id" => $request->input('delivery_men_id'),
-            "delivery_men" => "$deliveryMenName"
-        ]);
+        Delivery::create(
+            [
+                "title" => $request->input('title'),
+                "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
+                "descript" => $request->input('descript'),
+                "stats" => "Pendente",
+                "place" => $request->input('place'),
+                "delivery_men_id" => $request->input('delivery_men_id'),
+                "delivery_men" => $deliveryMenName
+            ]
+        );
 
 
         return to_route('deliveries.index')

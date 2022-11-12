@@ -10,8 +10,3 @@
 ## About Project
 
 Versão em Laravel do sistema de entregas!
-
-## NOTES
-
-- Refazer DB.
-- Remover ID do Create do Deliveries.
