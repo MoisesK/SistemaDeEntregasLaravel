@@ -30,9 +30,9 @@
                 <td class="col-1 break">{{ $delivery_men->deliveries_id }}</td>
                 <td class="col-1">{{ $delivery_men->vehicle }}</td>
                 <td class="col-1 text-center align-middle">
-                    <span class="d-flex">
+                    <div class="d-flex">
                         <!-- Botão de deletar -->
-                        <form action="{{ route('deliveries.destroy',$delivery_men->id) }}" method="POST">
+                        <form action="{{ route('deliverymens.destroy',$delivery_men->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger"><i class="bi bi-clipboard-x"></i></button>
@@ -40,7 +40,7 @@
 
                         <!-- BOtão de editar -->
                         <a href="{{ route('deliveries.edit', [$delivery_men->id]) }}" class="btn btn-primary ms-2"><i class="bi bi-pencil-square"></i></a>
-                    </span>
+                    </div>
                 </td>
             </tr>
             @endforeach

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class EloquentDeliveriesRepository implements DeliveriesRepository
 {
-    public function add(DeliveriesFormRequest $request): Delivery
+    public function add(DeliveriesFormRequest $request)
     {
         $deliveryMenId = $request->input('delivery_men_id');
         $deliveryMenName = DeliveryMan::query('delivery_men')->where('id', "$deliveryMenId")->value('name');

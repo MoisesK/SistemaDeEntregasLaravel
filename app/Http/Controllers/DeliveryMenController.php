@@ -52,16 +52,6 @@ class DeliveryMenController extends Controller
             ->with('msg.success', 'Entrega adicionada com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -92,8 +82,10 @@ class DeliveryMenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DeliveryMan $deliveryMan)
     {
-        //
+        $deliveryMan->delete();
+
+        return to_route('deliverymens.index')->with('msg.success', 'Entregador removido com sucesso!');
     }
 }

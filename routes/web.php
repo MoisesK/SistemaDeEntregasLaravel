@@ -32,4 +32,5 @@ Route::controller(DeliveryMenController::class)->group(function () {
     Route::get('/deliverymens', 'index')->name('deliverymens.index');
     Route::get('/deliverymens/create', 'create')->name('deliverymens.create');
     Route::post('/deliverymens/save', 'store')->name('deliverymens.store');
+    Route::delete('/deliverymens/destroy/{deliveryMan}', 'destroy')->name('deliverymens.destroy');
 });
