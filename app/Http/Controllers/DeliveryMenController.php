@@ -17,9 +17,12 @@ class DeliveryMenController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(DeliveryMan $d_man, Request $request)
     {
         $delivery_men = DeliveryMan::all();
+
+        // Implementar forma de exibir a quantidade de entregas com a id do entregador
+        $totalDelivey = $d_man->query()->where('delivery_men_id', '=');
 
         return view('delivery_mens.index')->with([
             "deliverie_mens" => $delivery_men
