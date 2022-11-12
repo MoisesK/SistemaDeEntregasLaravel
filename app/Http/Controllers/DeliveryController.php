@@ -6,11 +6,16 @@ use App\Http\Requests\DeliveriesFormRequest;
 use App\Http\Requests\DeliveryMenFormRequest;
 use App\Models\Delivery;
 use App\Models\DeliveryMan;
+use App\Repository\DeliveriesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class DeliveryController extends Controller
 {
+
+    public function __construct(private DeliveriesRepository $repository)
+    {
+    }
 
     public function index(Request $request)
     {
@@ -35,21 +40,7 @@ class DeliveryController extends Controller
 
     public function store(DeliveriesFormRequest $request)
     {
-        $deliveryMenId = $request->input('delivery_men_id');
-        $deliveryMenName = DeliveryMan::query('delivery_men')->where('id', "$deliveryMenId")->value('name');
-
-        Delivery::create(
-            [
-                "title" => $request->input('title'),
-                "deadline" => date('Y-m-d H:i:s', strtotime($request->input('deadline'))),
-                "descript" => $request->input('descript'),
-                "stats" => "Pendente",
-                "place" => $request->input('place'),
-                "delivery_men_id" => $request->input('delivery_men_id'),
-                "delivery_men" => $deliveryMenName
-            ]
-        );
-
+        $this->repository->add($request);
 
         return to_route('deliveries.index')
             ->with('msg.success', 'Entrega adicionada com sucesso!');

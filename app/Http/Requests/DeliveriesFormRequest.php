@@ -28,7 +28,7 @@ class DeliveriesFormRequest extends FormRequest
             'deadline' => ['required'],
             'descript' => ['min:10'],
             'place' => ['min:5'],
-            'delivery_men_id' => ['nullable']
+            'delivery_men_id' => ['required']
         ];
     }
 
@@ -39,7 +39,7 @@ class DeliveriesFormRequest extends FormRequest
             'deadline.required' => 'O campo Prazo deve ser preenchido!',
             'descript.min' => 'O campo de Descrição deve ser preenchido com no mínimo :min caracteres.',
             'place.min' => 'O campo de Local deve ser preenchido com no mínimo :min caracteres.',
-            'delivery_men_id.nullable' => 'Você deve selecionar um Entregador, caso não aja nenhum, cadastre!'
+            'delivery_men_id.required' => 'Você deve selecionar um Entregador, caso não aja nenhum, cadastre!'
         ];
     }
 }
