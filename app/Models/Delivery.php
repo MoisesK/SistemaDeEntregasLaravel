@@ -16,7 +16,7 @@ class Delivery extends Model
 
     public function deliveryMan()
     {
-        return $this->belongsTo(DeliveryMan::class);
+        return $this->belongsTo(DeliveryMan::class, 'delivery_mens');
     }
 
     protected static function booted()

@@ -11,10 +11,10 @@ class DeliveryMan extends Model
 
     protected $table = 'delivery_mens';
 
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function deliveries()
     {
-        return $this->hasMany(Delivery::class, 'delivery_mens_id');
+        return $this->hasMany(Delivery::class);
     }
 }

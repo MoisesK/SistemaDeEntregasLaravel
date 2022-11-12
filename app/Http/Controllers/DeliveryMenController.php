@@ -42,7 +42,6 @@ class DeliveryMenController extends Controller
     {
 
         DeliveryMan::create($infoDeliveryMen = [
-            'deliveries_id' => '0',
             'name' => $deliveryMen->input('name'),
             'adress' => $deliveryMen->input('adress'),
             'vehicle' => $deliveryMen->input('vehicle'),
