@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\DeliveriesFormRequest;
-use App\Http\Requests\DeliveryMenFormRequest;
 use App\Models\Delivery;
 use App\Models\DeliveryMan;
 use App\Repository\DeliveriesRepository;
