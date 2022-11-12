@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\DeliveryMenFormRequest;
 use App\Models\DeliveryMan;
+use App\Repository\EloquentDeliveryMensRepository;
 use Illuminate\Http\Request;
 
 class DeliveryMenController extends Controller
 {
+    public function __construct(private EloquentDeliveryMensRepository $repository)
+    {
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,15 +42,9 @@ class DeliveryMenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DeliveryMenFormRequest $deliveryMen)
+    public function store(DeliveryMenFormRequest $request)
     {
-
-        DeliveryMan::create($infoDeliveryMen = [
-            'name' => $deliveryMen->input('name'),
-            'adress' => $deliveryMen->input('adress'),
-            'vehicle' => $deliveryMen->input('vehicle'),
-            'age' => $deliveryMen->input('age'),
-        ]);
+        $this->repository->add($request);
 
         return to_route('deliverymens.index')
             ->with('msg.success', 'Entrega adicionada com sucesso!');
@@ -84,7 +82,7 @@ class DeliveryMenController extends Controller
      */
     public function destroy(DeliveryMan $deliveryMan)
     {
-        $deliveryMan->delete();
+        $this->repository->delete($deliveryMan);
 
         return to_route('deliverymens.index')->with('msg.success', 'Entregador removido com sucesso!');
     }
