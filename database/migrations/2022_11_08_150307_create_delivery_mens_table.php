@@ -16,7 +16,6 @@ return new class extends Migration
     {
         Schema::create('delivery_mens', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Delivery::class, 'deliveries_id')->constrained()->onDelete('cascade');
             $table->string('name', 100);
             $table->string('adress', 100);
             $table->string('vehicle', 100);
