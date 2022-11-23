@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\DeliveryController;
-use App\Http\Controllers\DeliveryMenController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,21 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return to_route('deliveries.index');
+    return view('welcome');
 });
 
-Route::controller(DeliveryController::class)->group(function () {
-    Route::get('/deliveries', 'index')->name('deliveries.index');
-    Route::get('/deliveries/create', 'create')->name('deliveries.create');
-    Route::post('/deliveries/save', 'store')->name('deliveries.store');
-    Route::delete('/deliveries/destroy/{delivery}', 'destroy')->name('deliveries.destroy');
-    Route::get('/deliveries/edit/{delivery}', 'edit')->name('deliveries.edit');
-    Route::put('/deliveries/update/{delivery}', 'update')->name('deliveries.update');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::controller(DeliveryMenController::class)->group(function () {
-    Route::get('/deliverymens', 'index')->name('deliverymens.index');
-    Route::get('/deliverymens/create', 'create')->name('deliverymens.create');
-    Route::post('/deliverymens/save', 'store')->name('deliverymens.store');
-    Route::delete('/deliverymens/destroy/{deliveryMan}', 'destroy')->name('deliverymens.destroy');
-});
+require __DIR__.'/auth.php';
